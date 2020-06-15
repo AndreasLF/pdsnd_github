@@ -6,6 +6,10 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+MONTHS = ['january', 'february', 'march', 'april', 'may', 'june']
+
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -60,14 +64,13 @@ def get_filters():
 
 
     if filter == 'month':
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        months_string = ' / '.join(months).title()
+        months_string = ' / '.join(MONTHS).title()
 
         while True:
             #input returns a string so it shouldn't give errors, even if the user inputs a numer
             month_input = input('\nWhich month are you interested in exploring the bike data for?\n ({}) \n'.format(months_string)).lower()
 
-            if month_input in months: #If the month is defined in months
+            if month_input in MONTHS: #If the month is defined in months
                 month = month_input #set month
                 break #break out of loop
             else: #if city is not defined
@@ -124,8 +127,7 @@ def load_data(city, month, day):
     # If month is not set to 'all' a new dataframe will be created only containing rows with the selected month
     if month != 'all':
         #The index is used to convert month to an integer
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month)+1
+        month = MONTHS.index(month)+1
 
         #New dataframe is created filtered by the month selected
         df = df[df['month']==month]
@@ -159,10 +161,7 @@ def time_stats(df):
     #Gets the amount of rentals by counting each value in the month column and only picking the top month
     rental_count = df['month'].value_counts()[month]
 
-    #Define a months array to get month name by index later
-    month_names = ['january', 'february', 'march', 'april', 'may', 'june']
-
-    month_name = month_names[int(month)-1].title() #Gets the month name from the months array
+    month_name = MONTHS[int(month)-1].title() #Gets the month name from the months array
     print("The most common month for bike rental is {}".format(month_name))
     print("With a total of {} rentals".format(rental_count))
 
@@ -177,7 +176,7 @@ def time_stats(df):
     #Define a days array to get day name by index later
     day_names = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
 
-    day_name = day_names[int(day)].title() #Gets the month name from the months array
+    day_name = day_names[int(day)].title() #Gets the month name from the days array
     print("The most common day for bike rental is {}".format(day_name))
     print("With a total of {} rentals".format(rental_count))
 
