@@ -5,7 +5,8 @@
 Bikeshare project
 
 ### Description
-Describe what your project is about and what it does
+The purpose of this project is to process data from a bikesharing service
+The project is part of the Udacity nanodegree program "Programming for Data Science with Python".
 
 ### Files used
 Include the files used
