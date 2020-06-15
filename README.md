@@ -2,7 +2,7 @@
 11th june 2020
 
 ### Project Title
-Bikeshare project
+Udacity Nanodegree - Bikeshare project
 
 ### Description
 The purpose of this project is to process data from a bikesharing service
