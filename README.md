@@ -12,4 +12,4 @@ The project is part of the Udacity nanodegree program "Programming for Data Scie
 The data files and the template used can be found on the project classroom uner the ressources tab https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+The project is based on the template provided in the Udacity course
