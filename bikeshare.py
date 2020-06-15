@@ -8,6 +8,8 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 MONTHS = ['january', 'february', 'march', 'april', 'may', 'june']
 
+DAYS = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+
 
 
 def get_filters():
@@ -83,14 +85,13 @@ def get_filters():
     # ----------------------------------------------------------------------------------------------
     # Get day variable from user
     if filter == 'day':
-        days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-        days_string = ' / '.join(days).title()
+        days_string = ' / '.join(DAYS).title()
 
         while True:
             #input returns a string so it shouldn't give errors, even if the user inputs a numer
             day_input = input('\nWhich day are you interested in exploring the bike data for?\n ({}) \n'.format(days_string)).lower()
 
-            if day_input in days: #If the city is defined in CITY_DATA
+            if day_input in DAYS: #If the city is defined in CITY_DATA
                 day = day_input #set city
                 break #break out of loop
             else: #if city is not defined
@@ -135,8 +136,7 @@ def load_data(city, month, day):
     # If day is not set to 'all' a new dataframe will be created only containing rows with the selected day
     if day != 'all':
         # filter by day of week to create the new dataframe
-        days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-        day = days.index(day)
+        day = DAYS.index(day)
         df =  df[df['day_of_week']==day]
 
     return df
@@ -174,9 +174,8 @@ def time_stats(df):
     rental_count = df['day_of_week'].value_counts()[day]
 
     #Define a days array to get day name by index later
-    day_names = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
 
-    day_name = day_names[int(day)].title() #Gets the month name from the days array
+    day_name = DAYS[int(day)].title() #Gets the month name from the days array
     print("The most common day for bike rental is {}".format(day_name))
     print("With a total of {} rentals".format(rental_count))
 
